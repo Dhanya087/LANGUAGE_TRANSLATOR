@@ -12,11 +12,11 @@ def get_language_code(language_name):
     }
     return languages.get(language_name.capitalize(), None)
 
-# Custom CSS for styling the app
+# Custom CSS for styling the app with new color scheme
 st.markdown("""
     <style>
     body {
-        background: linear-gradient(135deg, #FFDEE9 0%, #B5FFFC 100%);
+        background: linear-gradient(120deg, #f093fb 0%, #f5576c 100%);
         font-family: 'Arial', sans-serif;
     }
     .stApp {
@@ -25,21 +25,21 @@ st.markdown("""
         padding-top: 40px;
         padding-bottom: 40px;
         background: #fff;
-        border-radius: 15px;
-        box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+        border-radius: 20px;
+        box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.15);
         padding: 30px;
     }
     h1 {
-        color: #3a3a8e;
-        font-size: 42px;
+        color: #3D155F;
+        font-size: 45px;
         text-align: center;
         font-weight: bold;
         margin-bottom: 20px;
     }
     p {
         text-align: center;
-        color: #333;
-        font-size: 18px;
+        color: #A239CA;
+        font-size: 20px;
     }
     .stTextInput, .stTextArea, .stButton {
         font-size: 18px !important;
@@ -47,26 +47,26 @@ st.markdown("""
     .stTextArea textarea, .stTextInput input {
         padding: 12px;
         font-size: 18px;
-        border-radius: 10px;
-        border: 2px solid #1E90FF;
-        box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+        border-radius: 15px;
+        border: 2px solid #5A189A;
+        box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
     }
     .stButton > button {
-        background-color: #FFA07A;
+        background-color: #E07A5F;
         color: white;
         font-size: 20px;
-        padding: 12px 24px;
+        padding: 12px 30px;
         border: none;
-        border-radius: 10px;
+        border-radius: 15px;
         margin-top: 20px;
         cursor: pointer;
-        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
         transition: all 0.3s ease;
     }
     .stButton > button:hover {
-        background-color: #FF6347;
-        transform: translateY(-2px);
-        box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3);
+        background-color: #F4A261;
+        transform: translateY(-3px);
+        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
     }
     .stSelectbox, .stTextInput {
         margin-bottom: 25px;
@@ -89,9 +89,9 @@ st.markdown("""
     """, unsafe_allow_html=True)
 
 # Streamlit UI
-st.title("🌍 Language Translator")
+st.title("✨ Language Translator")
 
-st.write("Translate text between languages with ease and style. Powered by Deep Translator.")
+st.write("Translate text between languages effortlessly with a colorful and elegant interface.")
 
 # Input text
 source_text = st.text_area("📝 Enter the text you want to translate:", "", height=150)
@@ -99,21 +99,22 @@ source_text = st.text_area("📝 Enter the text you want to translate:", "", hei
 # Input source language (fixed selection)
 source_lang = st.selectbox("🌐 Select source language", ["English", "French", "Spanish", "German", "Italian"], index=0)
 
-# Target language input (searchable by name)
-target_language_search = st.text_input("🔎 Enter target language name (e.g., French, Spanish, German):")
+# Target language input (dropdown selection)
+target_lang = st.selectbox("🎯 Select target language", ["English", "French", "Spanish", "German", "Italian"], index=1)
 
 # Translate button
 if st.button("Translate"):
-    target_lang_code = get_language_code(target_language_search)
+    target_lang_code = get_language_code(target_lang)
+    source_lang_code = get_language_code(source_lang)
 
     if target_lang_code is None:
-        st.warning(f"⚠ Error: '{target_language_search}' is not a valid language name. Please try again.")
+        st.warning(f"⚠ Error: '{target_lang}' is not a valid language name. Please try again.")
     else:
         try:
             # Using deep-translator for translation
-            translator = GoogleTranslator(source=source_lang.lower(), target=target_lang_code)
+            translator = GoogleTranslator(source=source_lang_code, target=target_lang_code)
             translated_text = translator.translate(source_text)
-            st.success(f"🎯 *Translated Text*: {translated_text}")
+            st.success(f"🌍 *Translated Text*: {translated_text}")
         except Exception as e:
             st.error(f"An error occurred: {str(e)}")
 
