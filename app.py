@@ -16,7 +16,7 @@ def get_language_code(language_name):
 st.markdown("""
     <style>
     body {
-        background: linear-gradient(135deg, #74ebd5 0%, #ACB6E5 100%);
+        background: linear-gradient(135deg, #FFDEE9 0%, #B5FFFC 100%);
         font-family: 'Arial', sans-serif;
     }
     .stApp {
@@ -30,7 +30,7 @@ st.markdown("""
         padding: 30px;
     }
     h1 {
-        color: #003366;
+        color: #3a3a8e;
         font-size: 42px;
         text-align: center;
         font-weight: bold;
@@ -38,8 +38,8 @@ st.markdown("""
     }
     p {
         text-align: center;
-        color: #4B0082;
-        font-size: 20px;
+        color: #333;
+        font-size: 18px;
     }
     .stTextInput, .stTextArea, .stButton {
         font-size: 18px !important;
@@ -48,11 +48,11 @@ st.markdown("""
         padding: 12px;
         font-size: 18px;
         border-radius: 10px;
-        border: 2px solid #4CAF50;
+        border: 2px solid #1E90FF;
         box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
     }
     .stButton > button {
-        background-color: #ff6666;
+        background-color: #FFA07A;
         color: white;
         font-size: 20px;
         padding: 12px 24px;
@@ -64,7 +64,7 @@ st.markdown("""
         transition: all 0.3s ease;
     }
     .stButton > button:hover {
-        background-color: #ff4d4d;
+        background-color: #FF6347;
         transform: translateY(-2px);
         box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3);
     }
