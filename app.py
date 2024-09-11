@@ -8,7 +8,8 @@ def get_language_code(language_name):
         'French': 'fr',
         'Spanish': 'es',
         'German': 'de',
-        'Italian': 'it'
+        'Italian': 'it',
+        'Malayalam': 'ml'
     }
     return languages.get(language_name.capitalize(), None)
 
@@ -96,11 +97,11 @@ st.write("Translate text between languages effortlessly with a colorful and eleg
 # Input text
 source_text = st.text_area("📝 Enter the text you want to translate:", "", height=150)
 
-# Input source language (fixed selection)
-source_lang = st.selectbox("🌐 Select source language", ["English", "French", "Spanish", "German", "Italian","Malayalam"], index=0)
+# Input source language (dropdown selection)
+source_lang = st.selectbox("🌐 Select source language", ["English", "French", "Spanish", "German", "Italian", "Malayalam"], index=0)
 
 # Target language input (dropdown selection)
-target_lang = st.selectbox("🎯 Select target language", ["English", "French", "Spanish", "German", "Italian","Malayalam"], index=1)
+target_lang = st.selectbox("🎯 Select target language", ["English", "French", "Spanish", "German", "Italian", "Malayalam"], index=1)
 
 # Translate button
 if st.button("Translate"):
@@ -118,4 +119,17 @@ if st.button("Translate"):
         except Exception as e:
             st.error(f"An error occurred: {str(e)}")
 
+# Show supported languages with better design
+if st.checkbox("Show supported languages"):
+    st.write("Supported Languages:")
+    st.markdown(
+        """
+        - **English**
+        - **French**
+        - **Spanish**
+        - **German**
+        - **Italian**
+        - **Malayalam**
+        """
+    )
 
