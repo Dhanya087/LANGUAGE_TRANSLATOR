@@ -118,22 +118,4 @@ if st.button("Translate"):
         except Exception as e:
             st.error(f"An error occurred: {str(e)}")
 
-# Show supported languages with better design
-if st.checkbox("Show supported languages"):
-    st.write("Supported Languages:")
-    st.markdown(
-        """
-        - **English**
-        - **French**
-        - **Spanish**
-        - **German**
-        - **Italian**
-        """
-    )
 
-# Footer
-st.markdown("""
-    <div class="footer">
-        Made with ❤️ using Streamlit and Deep Translator
-    </div>
-    """, unsafe_allow_html=True)
