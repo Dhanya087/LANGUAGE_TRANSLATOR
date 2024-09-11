@@ -16,53 +16,60 @@ def get_language_code(language_name):
 st.markdown("""
     <style>
     body {
-        background-color: #e6f2ff;
+        background: linear-gradient(135deg, #74ebd5 0%, #ACB6E5 100%);
+        font-family: 'Arial', sans-serif;
     }
     .stApp {
         max-width: 800px;
         margin: auto;
-        padding-top: 30px;
+        padding-top: 40px;
+        padding-bottom: 40px;
+        background: #fff;
+        border-radius: 15px;
+        box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+        padding: 30px;
     }
     h1 {
         color: #003366;
-        font-size: 40px;
+        font-size: 42px;
         text-align: center;
-        margin-bottom: 10px;
-    }
-    .stTextInput, .stTextArea, .stButton {
-        font-size: 18px !important;
+        font-weight: bold;
+        margin-bottom: 20px;
     }
     p {
         text-align: center;
         color: #4B0082;
-        font-weight: 500;
+        font-size: 20px;
+    }
+    .stTextInput, .stTextArea, .stButton {
+        font-size: 18px !important;
+    }
+    .stTextArea textarea, .stTextInput input {
+        padding: 12px;
+        font-size: 18px;
+        border-radius: 10px;
+        border: 2px solid #4CAF50;
+        box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
     }
     .stButton > button {
-        background-color: #0066cc;
+        background-color: #ff6666;
         color: white;
-        font-size: 18px;
-        padding: 12px 30px;
+        font-size: 20px;
+        padding: 12px 24px;
         border: none;
-        border-radius: 6px;
-        margin-top: 10px;
+        border-radius: 10px;
+        margin-top: 20px;
         cursor: pointer;
-        transition: background-color 0.3s;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
     }
     .stButton > button:hover {
-        background-color: #004d99;
-    }
-    .stTextInput input {
-        border-radius: 10px;
-        border: 2px solid #4CAF50;
-        padding: 10px;
-    }
-    .stTextArea textarea {
-        border-radius: 10px;
-        border: 2px solid #4CAF50;
-        padding: 12px;
+        background-color: #ff4d4d;
+        transform: translateY(-2px);
+        box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3);
     }
     .stSelectbox, .stTextInput {
-        margin-bottom: 20px;
+        margin-bottom: 25px;
     }
     .supported-languages {
         font-weight: bold;
@@ -71,23 +78,26 @@ st.markdown("""
     }
     .footer {
         text-align: center;
-        padding-top: 40px;
+        padding-top: 30px;
         font-size: 16px;
         color: #333;
+    }
+    .stCheckbox {
+        margin-top: 20px;
     }
     </style>
     """, unsafe_allow_html=True)
 
 # Streamlit UI
-st.title("🌐 Language Translator")
+st.title("🌍 Language Translator")
 
-st.write("Easily translate text between different languages with an intuitive interface.")
+st.write("Translate text between languages with ease and style. Powered by Deep Translator.")
 
 # Input text
-source_text = st.text_area("📝 Enter the text you want to translate:", "")
+source_text = st.text_area("📝 Enter the text you want to translate:", "", height=150)
 
 # Input source language (fixed selection)
-source_lang = st.selectbox("🌍 Select source language", ["en", "fr", "es", "de", "it"], index=0)
+source_lang = st.selectbox("🌐 Select source language", ["English", "French", "Spanish", "German", "Italian"], index=0)
 
 # Target language input (searchable by name)
 target_language_search = st.text_input("🔎 Enter target language name (e.g., French, Spanish, German):")
@@ -101,22 +111,22 @@ if st.button("Translate"):
     else:
         try:
             # Using deep-translator for translation
-            translator = GoogleTranslator(source=source_lang, target=target_lang_code)
+            translator = GoogleTranslator(source=source_lang.lower(), target=target_lang_code)
             translated_text = translator.translate(source_text)
-            st.success(f"🎯 Translated Text: {translated_text}")
+            st.success(f"🎯 *Translated Text*: {translated_text}")
         except Exception as e:
             st.error(f"An error occurred: {str(e)}")
 
-# Show supported languages with a better design
+# Show supported languages with better design
 if st.checkbox("Show supported languages"):
     st.write("Supported Languages:")
-    st.write(
+    st.markdown(
         """
-        - English
-        - French
-        - Spanish
-        - German
-        - Italian
+        - **English**
+        - **French**
+        - **Spanish**
+        - **German**
+        - **Italian**
         """
     )
 
