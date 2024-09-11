@@ -89,7 +89,7 @@ st.markdown("""
     """, unsafe_allow_html=True)
 
 # Streamlit UI
-st.title("✨ Language Translator")
+st.title("Language Translator")
 
 st.write("Translate text between languages effortlessly with a colorful and elegant interface.")
 
@@ -97,10 +97,10 @@ st.write("Translate text between languages effortlessly with a colorful and eleg
 source_text = st.text_area("📝 Enter the text you want to translate:", "", height=150)
 
 # Input source language (fixed selection)
-source_lang = st.selectbox("🌐 Select source language", ["English", "French", "Spanish", "German", "Italian"], index=0)
+source_lang = st.selectbox("🌐 Select source language", ["English", "French", "Spanish", "German", "Italian","Malayalam"], index=0)
 
 # Target language input (dropdown selection)
-target_lang = st.selectbox("🎯 Select target language", ["English", "French", "Spanish", "German", "Italian"], index=1)
+target_lang = st.selectbox("🎯 Select target language", ["English", "French", "Spanish", "German", "Italian","Malayalam"], index=1)
 
 # Translate button
 if st.button("Translate"):
